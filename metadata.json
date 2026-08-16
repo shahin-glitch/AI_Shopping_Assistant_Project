@@ -1,0 +1,6 @@
+{
+  "name": "AI Shopping Assistant",
+  "description": "Multi-platform AI shopping assistant comparing real-time prices, reviews, ratings, and best sellers across Amazon, Flipkart, Myntra, and Meesho.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
