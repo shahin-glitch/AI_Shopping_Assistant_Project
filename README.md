@@ -29,3 +29,8 @@ The green **Best Recommended** badge is selected deterministically from returned
 ## Marketplace coverage
 
 Myntra, Meesho, Ajio, and Croma are intentionally not shown as live sources yet: this codebase has no official public product-search API credentials configured for them. Add a permitted partner/API integration for each before claiming live comparison coverage.
+
+
+## Credits
+
+Github = shahin-glitch
