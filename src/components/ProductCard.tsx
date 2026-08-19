@@ -69,6 +69,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               </span>
             )}
 
+            {product.isRecommended && (
+              <span className="text-[11px] font-mono uppercase px-2 py-0.5 bg-green-600 text-white border border-green-700 flex items-center gap-1 font-bold">
+                <CheckCircle className="w-3 h-3" />
+                <span>Best Recommended</span>
+              </span>
+            )}
+
             {product.badge && !product.isBestSeller && (
               <span className="text-[11px] font-mono uppercase px-2 py-0.5 border border-black/30 bg-neutral-50 text-black">
                 {product.badge}
@@ -121,8 +128,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
           {/* Rating and Reviews */}
           <div className="flex items-center gap-1 text-xs font-mono bg-neutral-50 px-2 py-1 border border-black/15">
-            <Star className="w-3.5 h-3.5 fill-black text-black" />
-            <span className="font-bold text-black">{product.rating.toFixed(1)}</span>
+            {product.rating > 0 ? (
+              <>
+                <Star className="w-3.5 h-3.5 fill-black text-black" />
+                <span className="font-bold text-black">{product.rating.toFixed(1)}</span>
+              </>
+            ) : <span className="font-bold text-neutral-500">Rating unavailable</span>}
             <span className="text-neutral-500">({product.reviewsCount})</span>
           </div>
         </div>
@@ -203,6 +214,12 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </div>
           )}
         </div>
+
+        {product.isRecommended && product.recommendationReason && (
+          <p className="mt-3 border border-green-300 bg-green-50 px-2.5 py-2 text-xs text-green-900">
+            <span className="font-semibold">Why recommended: </span>{product.recommendationReason}
+          </p>
+        )}
       </div>
 
       {/* Downward Section: Direct Platform Link Button */}

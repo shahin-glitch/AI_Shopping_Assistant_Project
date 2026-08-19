@@ -114,10 +114,12 @@ export const ComparisonMatrix: React.FC<ComparisonMatrixProps> = ({
                 </td>
                 {products.map((p) => (
                   <td key={p.id} className="p-2 sm:p-3">
-                    <div className="flex items-center gap-1 font-mono">
-                      <Star className="w-3.5 h-3.5 fill-black text-black" />
-                      <span className="font-bold">{p.rating.toFixed(1)} / 5</span>
-                    </div>
+                    {p.rating > 0 ? (
+                      <div className="flex items-center gap-1 font-mono">
+                        <Star className="w-3.5 h-3.5 fill-black text-black" />
+                        <span className="font-bold">{p.rating.toFixed(1)} / 5</span>
+                      </div>
+                    ) : <span className="font-mono text-neutral-500">Not supplied</span>}
                     <span className="text-[11px] text-neutral-500 font-mono block mt-0.5">
                       {p.reviewsCount}
                     </span>

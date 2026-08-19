@@ -18,6 +18,14 @@ export interface ProductItem {
   url: string;
   availability?: string;
   imageUrl?: string;
+  /** Whether this row came from a marketplace API rather than generated content. */
+  dataSource?: 'official-api' | 'unavailable';
+  /** Time at which the marketplace returned this listing. */
+  lastUpdated?: string;
+  /** The deterministic recommendation selected from the live results. */
+  isRecommended?: boolean;
+  /** A short, user-visible explanation for the recommendation. */
+  recommendationReason?: string;
 }
 
 export interface ComparisonVerdict {
@@ -28,6 +36,7 @@ export interface ComparisonVerdict {
   priceDifferenceNote: string;
   recommendation: string;
   searchQuery: string;
+  dataNotice?: string;
 }
 
 export interface SearchResponse {

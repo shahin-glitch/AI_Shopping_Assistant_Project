@@ -2,15 +2,11 @@ import React from "react";
 import { Sparkles, ShoppingBag, ShieldCheck } from "lucide-react";
 
 interface HeaderProps {
-  currency: string;
-  onCurrencyChange: (curr: string) => void;
   onOpenCompare: () => void;
   compareCount: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
-  currency,
-  onCurrencyChange,
   onOpenCompare,
   compareCount,
 }) => {
@@ -32,40 +28,14 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <p className="text-xs text-neutral-500 hidden sm:block mt-0.5 font-normal">
-              Real-time cross-platform comparison: Amazon • Flipkart • Myntra • Meesho
+              Live India comparison: Amazon • Flipkart
             </p>
           </div>
         </div>
 
         {/* Action controls */}
         <div className="flex items-center gap-2 sm:gap-3">
-          {/* Currency Toggle */}
-          <div className="flex items-center border border-black/20 text-xs font-mono">
-            <button
-              id="currency-inr-btn"
-              onClick={() => onCurrencyChange("INR")}
-              className={`px-2.5 py-1.5 transition-colors ${
-                currency === "INR"
-                  ? "bg-black text-white font-medium"
-                  : "bg-white text-black hover:bg-neutral-100"
-              }`}
-              title="Indian Rupee"
-            >
-              ₹ INR
-            </button>
-            <button
-              id="currency-usd-btn"
-              onClick={() => onCurrencyChange("USD")}
-              className={`px-2.5 py-1.5 transition-colors border-l border-black/20 ${
-                currency === "USD"
-                  ? "bg-black text-white font-medium"
-                  : "bg-white text-black hover:bg-neutral-100"
-              }`}
-              title="US Dollar"
-            >
-              $ USD
-            </button>
-          </div>
+          <span className="px-2.5 py-1.5 border border-black/20 text-xs font-mono bg-black text-white">₹ INR</span>
 
           {/* Compare Button if items selected */}
           {compareCount > 0 && (

@@ -60,6 +60,7 @@ export default function App() {
 
       const data: SearchResponse = await response.json();
       setSearchData(data);
+      setComparedProducts([]);
       // Reset filter on new search
       setSelectedPlatform("All");
     } catch (err: any) {
@@ -166,9 +167,11 @@ export default function App() {
       default:
         // Default AI balance: Best Sellers & Best Value first
         items.sort((a, b) => {
+          if (a.isRecommended && !b.isRecommended) return -1;
+          if (!a.isRecommended && b.isRecommended) return 1;
           if (a.isBestSeller && !b.isBestSeller) return -1;
           if (!a.isBestSeller && b.isBestSeller) return 1;
-          return b.rating - a.rating;
+          return (b.rating || 0) - (a.rating || 0);
         });
         break;
     }
@@ -180,8 +183,6 @@ export default function App() {
     <div className="min-h-screen bg-white text-black font-sans selection:bg-black selection:text-white">
       {/* Sticky Minimalist Header */}
       <Header
-        currency={currency}
-        onCurrencyChange={handleCurrencyChange}
         onOpenCompare={() => setIsCompareOpen(true)}
         compareCount={comparedProducts.length}
       />
@@ -350,10 +351,10 @@ export default function App() {
       <footer className="border-t border-black/10 mt-16 py-8 text-center text-xs text-neutral-500 font-mono">
         <div className="max-w-6xl mx-auto px-4 space-y-2">
           <p className="text-black font-medium">
-            AI Shopping Assistant — Real-Time Cross-Platform Intelligence
+            AI Shopping Assistant — Official marketplace data only
           </p>
           <p className="text-[11px]">
-            Aggregating listings across Amazon, Flipkart, Myntra, and Meesho. Prices & availability subject to live seller updates.
+            Amazon and Flipkart listings are shown only when their official API returns them. Other marketplaces are not yet connected.
           </p>
         </div>
       </footer>

@@ -13,7 +13,7 @@ interface PlatformFiltersProps {
   onViewModeChange: (mode: "grid" | "list") => void;
 }
 
-const PLATFORMS = ["All", "Amazon", "Flipkart", "Myntra", "Meesho"];
+const PLATFORMS = ["All", "Amazon", "Flipkart"];
 
 export const PlatformFilters: React.FC<PlatformFiltersProps> = ({
   selectedPlatform,

@@ -23,7 +23,7 @@ export const AIVerdict: React.FC<AIVerdictProps> = ({ verdict, totalProducts }) 
           </h2>
         </div>
         <span className="text-xs font-mono text-neutral-600">
-          Comparing {totalProducts} items across 4 platforms
+          Comparing {totalProducts} live items across configured marketplaces
         </span>
       </div>
 
@@ -31,6 +31,9 @@ export const AIVerdict: React.FC<AIVerdictProps> = ({ verdict, totalProducts }) 
       <p className="text-sm text-neutral-800 leading-relaxed mt-3 font-normal">
         {verdict.summary}
       </p>
+      {verdict.dataNotice && (
+        <p className="mt-2 text-[11px] font-mono text-neutral-600">Data source status: {verdict.dataNotice}</p>
+      )}
 
       {/* 3 Quick Intelligence Pillars */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 mt-4 pt-4 border-t border-black/10">
@@ -52,13 +55,13 @@ export const AIVerdict: React.FC<AIVerdictProps> = ({ verdict, totalProducts }) 
         <div className="p-3 border border-black/20 bg-neutral-50/50">
           <div className="flex items-center gap-1.5 text-xs uppercase font-mono tracking-wider text-neutral-600 mb-1">
             <Star className="w-3.5 h-3.5 text-black" />
-            <span>Top Rated & Verified</span>
+            <span>Ratings Source</span>
           </div>
           <p className="text-sm font-semibold text-black">
             {verdict.topRatedPlatform}
           </p>
           <p className="text-[11px] text-neutral-500 mt-0.5">
-            Highest genuine buyer reviews score
+            Rating data returned by the marketplace API
           </p>
         </div>
 
@@ -72,7 +75,7 @@ export const AIVerdict: React.FC<AIVerdictProps> = ({ verdict, totalProducts }) 
             {verdict.bestPlatform}
           </p>
           <p className="text-[11px] text-neutral-500 mt-0.5">
-            Optimal balance of price, speed & warranty
+            Deterministic live-data recommendation
           </p>
         </div>
       </div>
